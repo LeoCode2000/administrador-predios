@@ -1,0 +1,19 @@
+{% extends 'core/home.html' %}
+
+{% block title %}Agregar{% endblock %}
+
+{% block header %}
+<h1>Agregar propietario</h1>
+{% endblock%}
+
+{% block content %}
+    <h3>Formulario Propietario</h3>
+
+        <div class="containerForm">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Guardar">
+            </form>
+        </div>
+{% endblock %}

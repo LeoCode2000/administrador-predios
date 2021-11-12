@@ -1,0 +1,24 @@
+{% extends 'core/home.html' %}
+
+{% block title %}Borrar{% endblock %}
+
+{% block header %}
+<h1>Borrar Predio</h1>
+{% endblock%}
+
+{% block content %}
+    <h3>Borrar Predio</h3>
+
+
+        <div class="containerForm">
+            <form method="post">{% csrf_token %}
+                <p>Esta seguro que quiere borrar el predio: " {{ object.cedula_catastral }}, con direccion: {{ object.direccion }}"?</p>
+                <input type="submit" value="Si, borrar predio">
+            </form>
+            
+        </div>
+        <div class="containerForm">
+            <a class="delete-a" href="{% url 'pages:predios' %}">Cancelar</a>
+        </div>
+    
+{% endblock %}

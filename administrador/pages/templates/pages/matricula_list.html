@@ -1,0 +1,59 @@
+{% extends 'core/home.html' %}
+
+{% block title %}Buscar{% endblock %}
+
+{% block header %}
+<h1>Encontrar un propietario o predio</h1>
+{% endblock%}
+
+{% block barra %}
+<div class="search-container">
+    <form method="GET">
+      <input class="search" type="text1" placeholder="Buscar..." name="buscar" value="{{request.GET.buscar}}"> 
+      <button type="submit"><i href="" class="fa fa-search"></i></button>
+    </form>
+  </div>
+{% endblock %}
+    
+{% block content %}
+    <h2>Filtrar lista de matriculas</h2>
+
+    <div id="myBtnContainer">
+        <a class="btn" href="{% url 'pages:predios' %}">Ver Predios</a>
+        <a class="btn" href="{% url 'pages:propietarios' %}">Ver Propietarios</a>
+    </div>
+
+    <table id="myTable">
+            <tr>
+                <th>No. Matricula</th>
+                <th>Propietario</th>
+                <th>Predio</th>
+                <th>Opciones</th>
+            </tr>
+            {% for element in object_list %}
+                    <tr>
+                        <th class="element">{{element.id}}</th>
+                        <th class="element">{{element.propietario}}</th>
+                        <th class="element">{{element.predio}}</th>
+                        <th> <a href="{% url 'pages:page' element.id %}">Ver más</a>   
+                        |<a href="{% url 'pages:update' element.id %}"> Editar</a>
+                        |<a href="{% url 'pages:delete' element.id %}"> Borrar</a></th>
+                    </tr>
+        {% endfor %}
+    </table>
+
+    <div class="pags">
+        {% if page_obj.has_previous %}
+            <a class="form-a" href="?page={{ page_obj.previous_page_number}}">Anterior</a>
+        {% endif %}
+        {% if page_obj.has_next %}
+            <a class="form-a" href="?page={{ page_obj.next_page_number}}">Siguiente</a>
+        {% endif %}
+    </div>
+    
+{% endblock %}
+
+
+
+
+

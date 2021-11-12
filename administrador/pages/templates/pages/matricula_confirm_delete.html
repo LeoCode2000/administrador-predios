@@ -1,0 +1,24 @@
+{% extends 'core/home.html' %}
+
+{% block title %}Borrar{% endblock %}
+
+{% block header %}
+<h1>Borrar Matricula</h1>
+{% endblock%}
+
+{% block content %}
+    <h3>Borrar Matricula</h3>
+
+
+        <div class="containerForm">
+            <form method="post">{% csrf_token %}
+                <p>Esta seguro que quiere borrar la matricula " {{ object.id }} "?</p>
+                <input type="submit" value="Si, borrar matricula">
+            </form>
+            
+        </div>
+        <div class="containerForm">
+            <a class="delete-a" href="{% url 'pages:pages' %}">Cancelar</a>
+        </div>
+    
+{% endblock %}

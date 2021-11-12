@@ -1,0 +1,24 @@
+{% extends 'core/home.html' %}
+
+{% block title %}Borrar{% endblock %}
+
+{% block header %}
+<h1>Borrar Propietario</h1>
+{% endblock%}
+
+{% block content %}
+    <h3>Borrar Propietario</h3>
+
+
+        <div class="containerForm">
+            <form method="post">{% csrf_token %}
+                <p>Esta seguro que quiere borrar al propietario: " {{ object.nombre }} "?</p>
+                <input type="submit" value="Si, borrar propietario">
+            </form>
+            
+        </div>
+        <div class="containerForm">
+            <a class="delete-a" href="{% url 'pages:propietarios' %}">Cancelar</a>
+        </div>
+    
+{% endblock %}

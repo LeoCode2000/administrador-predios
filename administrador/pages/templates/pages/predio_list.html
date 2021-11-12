@@ -1,0 +1,59 @@
+{% extends 'core/home.html' %}
+
+{% block title %}Buscar{% endblock %}
+
+{% block header %}
+<h1>Encontrar un propietario o predio</h1>
+{% endblock%}
+
+{% block barra %}
+<div class="search-container">
+    <form method="GET">
+      <input class="search" type="text1" placeholder="Buscar..." name="buscar" value="{{request.GET.buscar}}"> 
+      <button type="submit"><i href="" class="fa fa-search"></i></button>
+    </form>
+  </div>
+{% endblock %}
+
+{% block content %}
+    <h2>Filtrar lista de predios</h2>
+
+    <div id="myBtnContainer">
+        <a class="btn active" href="{% url 'pages:pages' %}"> Ver Matriculas</a>
+        <a class="btn" href="{% url 'pages:propietarios' %}">Ver Propietarios</a>
+    </div>
+
+    <table id="myTable">
+            <tr>
+                <th>Cedula catastral</th>
+                <th>Dirección</th>
+                <th>Tipo</th>
+                <th>Opciones</th>
+            </tr>
+            {% for predio in object_list %}
+                    <tr>
+                        <th class="element">{{predio.cedula_catastral}}</th>
+                        <th class="element">{{predio.direccion}}</th>
+                        <th class="element">{{predio.tipo}}</th>
+                        <th> <a href="{% url 'pages:predio' predio.id %}">Ver más</a>   
+                        |<a href="{% url 'pages:predioUpdate' predio.id %}"> Editar</a>
+                        |<a href="{% url 'pages:predioDelete' predio.id %}"> Borrar</a></th>
+                    </tr>
+        {% endfor %}
+    </table>
+
+    <div class="pags">
+        {% if page_obj.has_previous %}
+            <a class="form-a" href="?page={{ page_obj.previous_page_number}}">Anterior</a>
+        {% endif %}
+        {% if page_obj.has_next %}
+            <a class="form-a" href="?page={{ page_obj.next_page_number}}">Siguiente</a>
+        {% endif %}
+    </div>
+    
+{% endblock %}
+
+
+
+
+

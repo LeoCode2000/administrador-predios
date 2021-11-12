@@ -1,0 +1,29 @@
+{% extends 'core/home.html' %}
+
+{% block title %}Actualizar{% endblock %}
+
+{% block header %}
+<h1>Actualizar Predio</h1>
+{% endblock%}
+
+{% block content %}
+    <h3>Actualizar Predio</h3>
+
+
+        <div class="containerForm">
+        
+            {% if 'ok' in request.GET %}
+                <p style="font:bold; color:#04AA6D;"><b>Predio actualizado satisfactoriamente</b></p>
+                <a href="{% url 'pages:predios' %}" style="font:bold; color:blue; text-decoration:none;">Regresar</a>
+
+            {% endif %}
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Guardar">
+            </form>
+            
+        </div>
+    
+{% endblock %}
