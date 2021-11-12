@@ -4,7 +4,7 @@ Esta prueba esta realizada con Python Django y PostgreSql.
 
 # Capas
 El proyecto se divide en dos capas principales
-  - Capa backend: consta de una base de datos postgreSql conectada con el framework Django.
+  - Capa backend: consta de una base de datos postgreSql conectada con el framework Django el cual gestiona la web mediante MVT (modelo vista template).
   - Capa frontend: consta de una pagina web realizada en html y css, esta es administrada por Django tanto las URLs como sus correspondientes renderizados.
  
 ### Instalacion
